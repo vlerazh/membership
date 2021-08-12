@@ -1,42 +1,50 @@
 @extends('layouts.app')
 @section('content')
-@if( !(auth()->user()->subscribed('basic plan') || auth()->user()->subscribed('premium plan')) )
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <div class="">
-                <p>You will be charged ${{ number_format($plan->cost, 2) }} for {{ $plan->name }} Plan</p>
+@if( !Auth::user()->subscriptions()->active()->count() >= 1 )
+<div class="login login-v1 ">
+<div class=" login-container">       
+            <div class="login-header">
+                <div class="brand">
+                <div class="d-flex align-items-center">
+                    <span class="logo"></span> <b>Color</b> Admin
+                    </div>
+                    <small>You will be charged ${{ number_format($plan->cost, 2) }} for {{ $plan->name }} Plan</small>
+                </div>
+                <div class="icon">
+                    <i class="fa fa-money"></i>
+                </div>
             </div>
-            <div class="card">
-                <form action="{{ route('subscription.create') }}" method="post" id="payment-form">
-                    @csrf
-                    <div class="form-group">
-                        <div class="card-header">
-                            <label for="card-element">
-                                Enter your credit card information
-                            </label>
-                        </div>
-                        <div class="card-body">
-                            <div id="card-element">
-                            <!-- A Stripe Element will be inserted here. -->
+            <div class="card login-body">
+                <div class="stripe-content fs-13px">
+                    <form action="{{ route('subscription.create') }}" method="post" id="payment-form">
+                        @csrf
+                        <div class="form-group">
+                            <div class="card-header">
+                                <label for="card-element">
+                                    Enter your credit card information
+                                </label>
                             </div>
-                            <!-- Used to display form errors. -->
-                            <div id="card-errors" role="alert"></div>
-                            <input type="hidden" name="plan" value="{{ $plan->id }}" />
+                            <div class="card-body">
+                                <div id="card-element">
+                                <!-- A Stripe Element will be inserted here. -->
+                                </div>
+                                <!-- Used to display form errors. -->
+                                <div id="card-errors" role="alert"></div>
+                                <input type="hidden" name="plan" value="{{ $plan->id }}" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-footer">
-                      <button
-                      id="card-button"
-                      class="btn btn-dark"
-                      type="submit"
-                      data-secret="{{ $intent->client_secret }}"
-                    > Pay </button>
-                    </div>
-                </form>
-            </div>
-        </div>
+                        <div class="card-footer">
+                        <button
+                        id="card-button"
+                        class="btn btn-dark"
+                        type="submit"
+                        data-secret="{{ $intent->client_secret }}"
+                        > Pay </button>
+                        </div>
+                    </form>
+                </div>
     </div>
+</div>
 </div>
 @endsection
 @push('scripts')
@@ -46,7 +54,7 @@
     // (Note that this demo uses a wider set of styles than the guide below.)
     var style = {
         base: {
-            color: '#32325d',
+            color: 'white',
             lineHeight: '18px',
             fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
             fontSmoothing: 'antialiased',
@@ -122,5 +130,6 @@
 @endpush
 @else
     <p>You already Subscribed! Your subscription ends at {{ auth()->user()->subscription($plan->slug)->trial_ends_at }} </p>
+    <a href="{{ route('courses.choose') }}">Go to your dashboard</a>
 
 @endif

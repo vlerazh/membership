@@ -1,76 +1,67 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="login-logo">
-    <a href="{{ url('/') }}"><b>Membership</b></a>
-  </div>
-  <!-- /.login-logo -->
-  <div class="card">
-    <div class="card-body login-card-body">
-        <p class="login-box-msg">Create a new account</p>
+	<!-- begin login -->
+	<div class="login login-v1 ">
+        <div class="login-container">
 
-        <form action="{{ route('register') }}" method="post">
-            @csrf
-            <div class="input-group mb-3">
-                <input id="name" type="text" placeholder="Name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>                <div class="input-group-append">
-                    <div class="input-group-text">
-                    <span class="fa fa-user"></span>
+            <div class="login-header">
+                <div class="brand">
+                <div class="d-flex align-items-center">
+                    <span class="logo"></span> <b>Color</b> Admin
                     </div>
+                    <small>Register on Membership App</small>
                 </div>
-                @error('name')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-
-            <div class="input-group mb-3">
-                <input id="email" type="email" placeholder="E-mail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                    <span class="fa fa-envelope"></span>
-                    </div>
-                </div>
-                @error('email')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-
-
-            <div class="input-group mb-3">
-                <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fa fa-lock"></span>
-                    </div>
-                </div>
-                @error('password')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-            </div>
-
-            <div class="input-group mb-3">
-                <input id="password-confirm" type="password" placeholder="Confirm Password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                <div class="input-group-append">
-                    <div class="input-group-text">
-                        <span class="fa fa-lock"></span>
-                    </div>
+                <div class="icon">
+                    <i class="fa fa-lock"></i>
                 </div>
             </div>
-
-
-            <div class="input-group mb-3">
-                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+            
+            
+            <div class="login-body">
+            
+                <div class="login-content fs-13px">
+                    <form action="{{ route('register') }}" method="POST">
+                        @csrf
+                        <div class="form-floating mb-2">
+                            <input type="text" class="form-control fs-13px h-45px   @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required id="emailAddress" placeholder="Name">
+                            @error('name')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input type="email" class="form-control fs-13px h-45px  @error('email') is-invalid @enderror" name="email" id="emailAddress" placeholder="Email Address">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input type="password" class="form-control fs-13px h-45px @error('password') is-invalid @enderror" name="password" required id="password" placeholder="Password">
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-floating mb-2">
+                            <input type="password" class="form-control fs-13px h-45px" name="password_confirmation" required  placeholder="Confirm Password">
+                        </div>
+                        <div class="login-buttons">
+                            <button type="submit" class="btn h-45px btn-success d-block w-100 btn-lg">Sign me up</button>
+                        </div>
+                        <div class="text-gray-500 mt-3">
+                            Already a member? Click <a href="{{route('login')}}"  class="text-white">here</a> to login.
+                        </div>
+                    </form>
+                </div>
+                
+                </div>
+            
             </div>
-        </form>
-        <p class="mb-0">
-            <a href="{{route('login')}}" class="text-center">Already have an account?</a>
-        </p>
-    </div>
-    <!-- /.Register-card-body -->
-</div>
+	</div>
+	<!-- end login -->
 @endsection
