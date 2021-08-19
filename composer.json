@@ -9,13 +9,16 @@
         "fideloper/proxy": "^4.4",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "harvesthq/chosen": "^1.8",
         "laravel/cashier": "^13.4",
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
         "maatwebsite/excel": "^3.1",
         "nesbot/carbon": "^2.51",
-        "spatie/laravel-permission": "^4.2"
+        "nexmo/client": "^2.4",
+        "spatie/laravel-permission": "^4.2",
+        "stackkit/laravel-database-emails": "^4.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

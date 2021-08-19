@@ -65608,3 +65608,6 @@ body {
   font-size:20px;
   text-transform:uppercase;
 }
+.chosen-container{
+  width:100% !important;
+}

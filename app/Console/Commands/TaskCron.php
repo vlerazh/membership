@@ -5,7 +5,8 @@ namespace App\Console\Commands;
 use App\Mail\SendEmail;
 use App\Models\User;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Mail;
+use Stackkit\LaravelDatabaseEmails\Email;
+use Illuminate\Http\Request;
 
 class TaskCron extends Command
 {
@@ -14,7 +15,7 @@ class TaskCron extends Command
      *
      * @var string
      */
-    protected $signature = 'task:cron';
+    protected $signature = 'email:send {recipient} {cc} {bcc?}  {subject?} {body?} ';
 
     /**
      * The console command description.
@@ -22,7 +23,6 @@ class TaskCron extends Command
      * @var string
      */
     protected $description = 'Command description';
-
     /**
      * Create a new command instance.
      *
@@ -40,15 +40,26 @@ class TaskCron extends Command
      */
     public function handle()
     {
-        $users = User::all();
+        // $users = User::all();
         
-        if (count($users) > 0) {
-            foreach($users as $user) {
+        // if (count($users) > 0) {
+        //     foreach($users as $user) {
                 
-                $five_days_before =  date('Y-m-d', strtotime('-5 days', strtotime($user)));
-                if($user->trial)
-                Mail::to($user->email)->send(new SendEmail);
-            }
-        }
+        //         $five_days_before =  date('Y-m-d', strtotime('-5 days', strtotime($user)));
+        //         if($user->trial)
+        //         Mail::to($user->email)->send(new SendEmail);
+        //     }
+        // // }
+        Email::compose()
+            ->label('welcome')
+            ->cc($this->argument('cc'))
+            ->bcc($this->argument('bcc'))
+            ->recipient($this->argument('recipient'))
+            ->subject($this->argument('subject'))
+            ->view($this->argument('body'))
+            ->send();
+            return 'Email send';
+
+
     }
 }

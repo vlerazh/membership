@@ -51,6 +51,11 @@ Route::group(['middleware' => 'auth'], function() {
     //Routes for create Plan
     Route::get('create/plan', [App\Http\Controllers\SubscriptionController::class, 'createPlan'])->name('create.plan');
     Route::post('store/plan', [App\Http\Controllers\SubscriptionController::class, 'storePlan'])->name('store.plan');
+
+    //Routes for email
+    Route::resource('/email', App\Http\Controllers\EmailController::class);
+    Route::get('sms', [App\Http\Controllers\SendSMSController::class, 'index']);
+    Route::post('sendSms', [App\Http\Controllers\SendSMSController::class, 'sendSms']);
 });
 
 Route::group(['middleware' => 'auth', 'middleware' => 'subscribed'], function() { 
