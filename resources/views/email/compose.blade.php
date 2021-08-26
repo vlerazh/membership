@@ -9,17 +9,27 @@
                     <form class="form-horizontal" action="/email" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="to" class="col-sm-1 control-label">To:</label>
                             <div class="col-sm-11">
-                                  <input type="email" class="form-control select2-offscreen" id="to" placeholder="Type email" tabindex="-1" name="to">
+                                <label for="plan name">To:</label>
+                                <select data-placeholder="Select Members" multiple class="chosen-select form-select" name="to[]">
+                                    <option value=""></option>
+                                    @foreach ($members as $member)
+                                        <option value="{{ $member->email }}">{{ $member->name }}</option>
+                                    @endforeach
+                                  </select>
                             </div>
                           </div>
                         <div class="form-group">
-                            <label for="cc" class="col-sm-1 control-label">CC:</label>
                             <div class="col-sm-11">
-                                  <input type="email" class="form-control select2-offscreen" id="cc" placeholder="Type email" tabindex="-1" name="cc">
+                                <label for="plan name">Cc:</label>
+                                <select data-placeholder="Select Members" multiple class="chosen-select form-select" name="cc[]">
+                                    <option value=""></option>
+                                    @foreach ($members as $member)
+                                        <option value="{{ $member->email }}">{{ $member->name }}</option>
+                                    @endforeach
+                                </select>                            
                             </div>
-                          </div>
+                        </div>
                         <div class="form-group">
                             <label for="bcc" class="col-sm-1 control-label">SUBJECT:</label>
                             <div class="col-sm-11">
@@ -84,4 +94,11 @@
     
     </div>
     </div>
+    @push('script')
+<script>
+    $(".chosen-select").chosen({
+        no_results_text: "Oops, nothing found!"
+    })
+</script>   
+@endpush
 @endsection

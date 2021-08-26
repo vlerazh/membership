@@ -54,7 +54,7 @@ Route::group(['middleware' => 'auth'], function() {
 
     //Routes for email
     Route::resource('/email', App\Http\Controllers\EmailController::class);
-    Route::get('sms', [App\Http\Controllers\SendSMSController::class, 'index']);
+    Route::get('sms', [App\Http\Controllers\SendSMSController::class, 'index'])->name('sms.send');
     Route::post('sendSms', [App\Http\Controllers\SendSMSController::class, 'sendSms']);
 });
 

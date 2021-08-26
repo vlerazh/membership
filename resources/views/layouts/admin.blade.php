@@ -148,15 +148,21 @@
 
                         <li class="nav-item">
                             <a href="{{ url('/members') }}" class="nav-link">
-                            <i class="fa fa-image nav-icon"></i>
-                            <p>Students</p>
+                            <i class="fa fa-users nav-icon"></i>
+                            <p>Members</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
                             <a href="{{ route('email.create') }}" class="nav-link">
-                            <i class="fa fa-lock nav-icon"></i>
+                            <i class="fa fa-envelope nav-icon"></i>
                             <p>Email</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('sms.send') }}" class="nav-link">
+                            <i class="fa fa-comment nav-icon"></i>
+                            <p>SMS</p>
                             </a>
                         </li>
 

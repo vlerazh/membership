@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Member;
+use Session;
 class EmailController extends Controller
 {
     /**
@@ -13,6 +14,7 @@ class EmailController extends Controller
      */
     public function index()
     {
+        
         return view('email.index ');
     }
 
@@ -23,7 +25,10 @@ class EmailController extends Controller
      */
     public function create()
     {
-        return view('email.compose');
+        $members = Member::whereHas('courses', function($q) {
+            $q->where('id', Session::get('course_id'));
+        })->get();
+        return view('email.compose')->with('members', $members);
     }
 
     /**
@@ -34,6 +39,7 @@ class EmailController extends Controller
      */
     public function store(Request $request)
     {
+        
         \Artisan::call('email:send' , [
             'recipient' => $request->input('to'), 
             'cc'=>$request->input('cc'),
