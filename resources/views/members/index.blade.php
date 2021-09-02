@@ -7,17 +7,19 @@ Members
 <div class="card">
     <div class="card-header">
         <h3 class="card-title">Members Table</h3>
-        <div class="card-tools">
+        <div class="card-tools members-card-tools">
             <a href="{{ url('members/create') }}" class="btn btn-primary"><i class="fas fa-shield-alt"></i> Add new Member</a>
             <form action="/import" method="POST" enctype="multipart/form-data" id="form">
                 @csrf
-                <input type="file" name="import" value="Import" id="file">
+                <label for="file-upload" class="custom-file-upload btn btn-success ">Upload</label>
+                <input id="file-upload" name="import"   type="file"/>
+                
                 <a class="btn btn-warning" href="{{ route('export') }}">Export</a>
             </form>
             <a class="btn btn-secondary"  onclick="window.print()">Print</a>
         </div>
     </div>
-    <div class="card-body table-responsive p-0">
+    <div class="card-body table-responsive p-0" style="overflow-x:hidden; ">
         <table class="table table-hover text-nowrap">
             <thead>
                 <tr>
@@ -28,6 +30,7 @@ Members
                     <th>Address</th>
                     <th>Course Fee</th>
                     <th>Paid</th>
+                    <th>Is Active </th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -52,6 +55,11 @@ Members
                             </form>
                         </td>
                         <td>
+                            <div class="form-check form-switch">
+                                <input type="checkbox" class="form-check-input" id="customSwitch1">
+                            </div>
+                        </td>
+                        <td>
                             <a href="{{ route('members.edit', $member->id ) }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
                             <form action="{{ route('members.destroy', $member) }}" method="POST" style="display: inline-block;">
                                 @csrf
@@ -72,7 +80,7 @@ Members
     </div>
 </div>
 <script>
-    document.getElementById("file").onchange = function() {
+    document.getElementById("file-upload").onchange = function() {
         document.getElementById("form").submit();
     };
     document.getElementById("paid").onchange = function() {

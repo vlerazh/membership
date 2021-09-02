@@ -22,7 +22,7 @@ class SendSMSController extends Controller
         
         foreach($request->numbers as $number){
             $response = $client->sms()->send(
-                new \Vonage\SMS\Message\SMS($number, 'Membership', $request->sms_message)
+                new \Vonage\SMS\Message\SMS($number, (Auth::user()->company_name != null ? Auth::user()->company_name : 'Membership'), $request->sms_message)
             );
         };
         $message = $response->current();

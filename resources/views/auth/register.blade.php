@@ -50,6 +50,9 @@
                         <div class="form-floating mb-2">
                             <input type="password" class="form-control fs-13px h-45px" name="password_confirmation" required  placeholder="Confirm Password">
                         </div>
+                        <div class="form-floating mb-2">
+                            <input type="text" class="form-control fs-13px h-45px " name="company_name"   placeholder="Company name (optional)">
+                        </div>
                         <div class="login-buttons">
                             <button type="submit" class="btn h-45px btn-success d-block w-100 btn-lg">Sign me up</button>
                         </div>
