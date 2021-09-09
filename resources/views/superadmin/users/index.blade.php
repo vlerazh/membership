@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.superadmin')
 
 @section('title')
 User
@@ -48,7 +48,7 @@ User
                         <tr>
                             <td>{{ $user->id }}</td>
                             <td> {{ $user->name }}</td>
-                            <td>{{ $user->roles->first()->name }}</td>
+                            <td>{{ $user->getRoleNames() }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
                                 <a class="btn btn-sm btn-info" href="{{ route('user.show', $user->id) }}"> <i class="fa fa-eye"></i> View</a>

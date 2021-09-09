@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.superadmin')
 @section('pageName')
 Create Roles
 @endsection

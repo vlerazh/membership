@@ -87,7 +87,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <li class="nav-item">
-                            <a href="{{ route('home' , ['course_id' => $course_id]) }}" class="nav-link">
+                            <a href="{{ route('superadmin')}}" class="nav-link">
                                 <i class="nav-icon fa fa-chalkboard"></i>
                                 <p>
                                     Dashboard
@@ -103,7 +103,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                {{-- @can('manage_users') --}}
+                                @can('manage_users')
                                     <li class="nav-item">
                                         <a href="{{ route('roles.index') }}" class="nav-link">
                                             <i class="fa fa-bomb nav-icon"></i>
@@ -128,44 +128,9 @@
                                         <p>Plans</p>
                                     </a>
                                 </li>
-                                {{-- @endcan --}}
+                                @endcan
                              </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('user.profile') }}" class="nav-link">
-                                <i class="nav-icon fa fa-user"></i>
-                                <p>
-                                    Profile
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('courses.index') }}" class="nav-link">
-                            <i class="fa fa-bell nav-icon"></i>
-                            <p>Courses</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ url('/members') }}" class="nav-link">
-                            <i class="fa fa-users nav-icon"></i>
-                            <p>Members</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="{{ route('email.create') }}" class="nav-link">
-                            <i class="fa fa-envelope nav-icon"></i>
-                            <p>Email</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('sms.send') }}" class="nav-link">
-                            <i class="fa fa-comment nav-icon"></i>
-                            <p>SMS</p>
-                            </a>
-                        </li>
-
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}"
                             onclick="event.preventDefault();

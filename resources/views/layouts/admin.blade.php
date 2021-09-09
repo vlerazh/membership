@@ -94,43 +94,6 @@
                                 </p>
                             </a>
                         </li>
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link active">
-                                <i class="nav-icon fa fa-cogs"></i>
-                                <p>
-                                    Management
-                                    <i class="right fa fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                {{-- @can('manage_users') --}}
-                                    <li class="nav-item">
-                                        <a href="{{ route('roles.index') }}" class="nav-link">
-                                            <i class="fa fa-bomb nav-icon"></i>
-                                            <p>Roles</p>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="{{ route('permission.index') }}" class="nav-link">
-                                            <i class="fa fa-bomb nav-icon"></i>
-                                            <p>Permissions</p>
-                                        </a>
-                                    </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('user.index') }}" class="nav-link">
-                                        <i class="fa fa-users-cog nav-icon"></i>
-                                        <p>Users</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="{{ route('plans.index') }}" class="nav-link">
-                                        <i class="fa fa-users-cog nav-icon"></i>
-                                        <p>Plans</p>
-                                    </a>
-                                </li>
-                                {{-- @endcan --}}
-                             </ul>
-                        </li>
                         <li class="nav-item">
                             <a href="{{ route('user.profile') }}" class="nav-link">
                                 <i class="nav-icon fa fa-user"></i>

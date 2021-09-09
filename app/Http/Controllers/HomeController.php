@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
-
+use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     /**
@@ -24,7 +24,12 @@ class HomeController extends Controller
      */
     public function index($course_id)
     {
+
         Session::put(['course_id' => $course_id]);
         return view('dashboard')->with('course_id' , $course_id);
+        
+    }
+    public function redirectSuperadmin(){
+        return view('superadmin.superadminDashboard');
     }
 }

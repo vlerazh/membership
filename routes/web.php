@@ -23,7 +23,7 @@ Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controller
 
 Route::group(['middleware' => 'auth', 'middleware' => 'subscribed'], function() {
     Route::get('/dashboard/{course_id}', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+    Route::get('/superadmin-dashboard' , [App\Http\Controllers\HomeController::class, 'redirectSuperadmin'])->name('superadmin');
     Route::resource('user', App\Http\Controllers\Superadmin\UserController::class);
    
     Route::get('serarch', [App\Http\Controllers\Superadmin\UserController::class, 'search'])->name('user.search');
