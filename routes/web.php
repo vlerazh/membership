@@ -68,4 +68,6 @@ Route::group(['middleware' => 'auth', 'middleware' => 'subscribed'], function() 
     Route::post('/import' ,[App\Http\Controllers\MemberController::class , 'import']);
     Route::get('export', [App\Http\Controllers\MemberController::class, 'export'])->name('export');
     Route::put('/paid/{member_id}', [App\Http\Controllers\MemberController::class, 'paid'])->name('paid');
+    Route::put('/isActive/{member_id}', [App\Http\Controllers\MemberController::class, 'isActive'])->name('isActive');
+
 });

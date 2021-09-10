@@ -26,14 +26,14 @@ Courses
             <tbody>
                 @forelse ($courses as $course )
                     <tr>
-                        <td>{{ $course->id }}</td>
-                        <td>{{ $course->name }}</td>
-                        <td>{{ $course->description }}</td>
-                        <td>{{ $course->course_fee }}</td>
-                        <td></td>
+                        <td>{{ $course['id'] }}</td>
+                        <td>{{ $course['name'] }}</td>
+                        <td>{{ $course['description'] }}</td>
+                        <td>{{ $course['course_fee'] }}</td>
+                        <td>{{ $course['members'] }}</td>
                          <td>
-                            <a href="{{ route('courses.edit', $course->id ) }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
-                            <form action="{{ route('courses.destroy', $course) }}" method="POST" style="display: inline-block;">
+                            <a href="{{ route('courses.edit', $course['id'] ) }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
+                            <form action="{{ route('courses.destroy', $course['id']) }}" method="POST" style="display: inline-block;">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger">

@@ -121,6 +121,14 @@ class MemberController extends Controller
         return  redirect('/members')->with('success', 'Paid value has been changed');
         // dd($request->get('paid'));
     }
+
+    public function isActive(Request $request, $member_id){
+        $member = Member::find($member_id);
+
+        $member->is_active = ($request->get('isactive') == "on" ? true : false);
+        $member->save();
+        return redirect('/members')->with('success', 'Is Active value has been changed');
+    }
     public function import(Request $request) 
     {
         Excel::import(new MembersImport,$request->file('import'));

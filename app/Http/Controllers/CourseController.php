@@ -6,7 +6,7 @@ use App\Models\Course;
 use App\Models\Member;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use Session;
 class CourseController extends Controller
 {
     /**
@@ -17,7 +17,21 @@ class CourseController extends Controller
     public function index()
     {
         $courses = Course::where('user_id'  , Auth::user()->id)->get();
-        return view('courses.index')->with('courses',$courses);
+        $course_member = array();
+        foreach($courses as $course ){
+            $members = Member::whereHas('courses', function($q) use($course){
+                $q->where('id' , $course->id);
+            })->count();
+            array_push($course_member , [
+                'id' => $course->id,
+                'name'=> $course->name,
+                'description' => $course->description,
+                'course_fee' => $course->course_fee,
+                'members' => $members,
+            ]);
+        }
+
+        return view('courses.index')->with('courses',$course_member);
     }
 
     /**
@@ -111,8 +125,9 @@ class CourseController extends Controller
      * @param  \App\Models\Course  $course
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Course $course)
+    public function destroy($id)
     {
+        $course = Course::where('id',$id);
         $course->delete();
         return redirect('/courses')->with('success', 'Course deleted');
     }

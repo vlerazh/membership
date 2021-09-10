@@ -124,7 +124,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('sms.send') }}" class="nav-link">
-                            <i class="fa fa-comment nav-icon"></i>
+                            <i class="fa fa-comment nav-icon"></i> 
                             <p>SMS</p>
                             </a>
                         </li>

@@ -55,9 +55,18 @@ Members
                             </form>
                         </td>
                         <td>
-                            <div class="form-check form-switch">
-                                <input type="checkbox" class="form-check-input" id="customSwitch1">
-                            </div>
+                            <form action="/isActive/{{ $member->id }}" method="POST" id="active-form">
+                                @csrf
+                                @method('put')
+                                <label class="switch">
+                                    <input name="isactive" type="checkbox" onChange="this.form.submit()" id="switch-button"
+                                    @if($member->is_active === 1)
+                                        checked
+                                    @endif
+                                    >
+                                    <span class="slider"></span>
+                                </label>
+                            </form>
                         </td>
                         <td>
                             <a href="{{ route('members.edit', $member->id ) }}" class="btn btn-info"><i class="fa fa-edit"></i></a>
@@ -85,6 +94,9 @@ Members
     };
     document.getElementById("paid").onchange = function() {
         document.getElementById("paid-form").submit();
+    };
+    document.getElementById("switch-button").onchange = function() {
+        document.getElementById("active-form").submit();
     };
 </script>
 @endsection
