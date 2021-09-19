@@ -70,4 +70,9 @@ Route::group(['middleware' => 'auth', 'middleware' => 'subscribed'], function() 
     Route::put('/paid/{member_id}', [App\Http\Controllers\MemberController::class, 'paid'])->name('paid');
     Route::put('/isActive/{member_id}', [App\Http\Controllers\MemberController::class, 'isActive'])->name('isActive');
 
+    //dashboard
+    Route::get('/memberChart' , [App\Http\Controllers\HomeController::class, 'activeAndNonActiveMembers']);
+    Route::get('/memberCourseChart' , [App\Http\Controllers\HomeController::class, 'membersPerCourse']);
+    Route::get('/coursesPerMember' , [App\Http\Controllers\HomeController::class, 'coursesPerMember']);
+
 });

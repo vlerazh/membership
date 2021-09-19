@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+{{ var_dump(auth()->user()->subscription($plan->slug) ) }}
 @if( !Auth::user()->subscriptions()->active()->count() >= 1 )
 <div class="login login-v1 ">
 <div class=" login-container">       
@@ -129,7 +130,8 @@
 </script>
 @endpush
 @else
-    <p>You already Subscribed! Your subscription ends at {{ auth()->user()->subscription($plan->slug)->trial_ends_at }} </p>
-    <a href="{{ route('courses.choose') }}">Go to your dashboard</a>
-
+    <div class="container text-div">
+        {{-- <p class="text">You already Subscribed! Your subscription ends at {{ auth()->user()->subscription($plan->slug)->trial_ends_at  }} </p> --}}
+        <a  class="btn btn-primary"href="{{ route('courses.choose') }}">Go to your dashboard</a>
+    </div>
 @endif

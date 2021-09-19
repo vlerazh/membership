@@ -93,7 +93,7 @@
         <!-- end #home -->
         
         <!-- begin #about -->
-        <div id="about" class="content" data-scrollview="true">
+        {{-- <div id="about" class="content" data-scrollview="true">
             <!-- begin container -->
             <div class="container" data-animation="true" data-animation-type="fadeInDown">
                 <h2 class="content-title">About Us</h2>
@@ -186,7 +186,7 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #about -->
     
         <!-- begin #milestone -->
@@ -240,7 +240,7 @@
         <!-- end #milestone -->
         
         <!-- begin #team -->
-        <div id="team" class="content" data-scrollview="true">
+        {{-- <div id="team" class="content" data-scrollview="true">
             <!-- begin container -->
             <div class="container">
                 <h2 class="content-title">Our Team</h2>
@@ -317,11 +317,11 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #team -->
         
         <!-- begin #quote -->
-        <div id="quote" class="content bg-black-darker has-bg" data-scrollview="true">
+        {{-- <div id="quote" class="content bg-black-darker has-bg" data-scrollview="true">
             <!-- begin content-bg -->
             <div class="content-bg">
                 <img src="../assets/img/bg/bg-quote.jpg" alt="Quote" />
@@ -343,11 +343,11 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #quote -->
         
         <!-- beign #service -->
-        <div id="service" class="content" data-scrollview="true">
+        {{-- <div id="service" class="content" data-scrollview="true">
             <!-- begin container -->
             <div class="container">
                 <h2 class="content-title">Our Services</h2>
@@ -431,11 +431,11 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #about -->
         
         <!-- beign #action-box -->
-        <div id="action-box" class="content has-bg" data-scrollview="true">
+        {{-- <div id="action-box" class="content has-bg" data-scrollview="true">
             <!-- begin content-bg -->
             <div class="content-bg">
                 <img src="../assets/img/bg/bg-action.jpg" alt="Action" />
@@ -465,7 +465,7 @@
                 <!-- end row -->
             </div>
             <!-- end container -->
-        </div>
+        </div> --}}
         <!-- end #action-box -->
         
         <!-- begin #work -->

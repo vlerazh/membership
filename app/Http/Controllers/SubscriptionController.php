@@ -24,7 +24,7 @@ class SubscriptionController extends Controller
         $user->createOrGetStripeCustomer();
         $user->updateDefaultPaymentMethod($paymentMethod);
         $user->newSubscription($plan->slug, $plan->stripe_plan)
-            ->trialDays($plan->slug == 'basic plan' ? 30 : 40)
+            ->trialDays($plan->slug == 'free trial' ? 14 : 30)
             ->create($paymentMethod, [
                 'email' => $user->email,
             ]);
@@ -35,7 +35,7 @@ class SubscriptionController extends Controller
 
     public function createPlan()
     {
-        return view('plans.create');
+        return view('superadmin.plans.create');
     }
 
     public function storePlan(Request $request)

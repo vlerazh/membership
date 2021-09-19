@@ -17,7 +17,7 @@ class CheckSubscription
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!(auth()->user()->subscribed('basic plan') || auth()->user()->subscribed('premium plan')) ){
+        if( !Auth::user() || !(auth()->user()->subscribed('basic plan') || auth()->user()->subscribed('premium plan') || auth()->user()->subscribed('free trial')) ){
             return redirect('/');
         }
         return $next($request);

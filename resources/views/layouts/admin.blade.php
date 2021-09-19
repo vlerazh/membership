@@ -185,6 +185,7 @@
     <!-- ./wrapper -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.0/echarts.min.js" integrity="sha512-UN8wX5Zf4Af6/2UJOYTYyWLHdua4SWMd1pnIxNoDCtqdaAMk1TQdvwwgoG7ShvuOS1d9jCerLNzwfvRmL7N4iA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @stack('script')
 </body>
 

@@ -65681,3 +65681,6 @@ body {
   .slider:before {
   border-radius: 50%;
   }
+  #app{
+  height: auto;
+  }
