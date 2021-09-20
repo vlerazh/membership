@@ -10,15 +10,15 @@ use Illuminate\Queue\SerializesModels;
 class SendEmail extends Mailable
 {
     use Queueable, SerializesModels;
-
+    public $mailData;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($mailData)
     {
-        //
+        $this->mailData = $mailData;
     }
 
     /**
@@ -28,6 +28,6 @@ class SendEmail extends Mailable
      */
     public function build()
     {
-        return $this->from('admin@membership-app.com')->view('email.template');
+        return $this->markdown('email.template')->with('body', $this->mailData['body']);
     }
 }

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Session;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Member;
+use Illuminate\Support\Facades\DB;
 use App\Models\Course;
 class HomeController extends Controller
 {
@@ -31,8 +32,8 @@ class HomeController extends Controller
         $courses_count = Course::where('user_id'  , Auth::user()->id)->count();
         $members_count = $this->allMembersPerUser();
         $paid_members_count = $this->paidCourses();
-       // $income = $this->income();
-        return view('dashboard', compact('course_id', 'courses_count' ,'members_count', 'paid_members_count'));
+        $income = $this->income();
+        return view('dashboard', compact('course_id', 'courses_count' ,'members_count', 'paid_members_count','income'));
         
     }
     public function redirectSuperadmin(){
@@ -98,16 +99,10 @@ class HomeController extends Controller
         return $all_members;
     }
 
-    // public function income(){
-    //     $courses = Course::where('user_id'  , Auth::user()->id)->get();
-    //     $income = 0;
-    //     foreach($courses as $course ){
-    //         $members = Member::whereHas('courses', function($q) use($course){
-    //             $q->where('id' , $course->id)
-    //                 ->where('paid' , 1);
-    //         })->sum('course_fee');
-    //         $income += $members;
-    //     }
-    //     dd( $income);
-    // }
+    public function income(){
+        $courses = Course::where('user_id'  , Auth::user()->id)->get('id');
+        $courseIds = DB::table('courses_members')->where('paid',1)->whereIn('course_id' , $courses)->pluck('course_id');
+        $course_fe = Course::whereIn('id',$courseIds)->sum('course_fee');
+        return $courseIds->count() * $course_fe;
+    }
 }

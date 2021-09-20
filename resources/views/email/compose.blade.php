@@ -6,7 +6,7 @@
             <div class="panel panel-default">
                 <div class="panel-body message">
                     <p class="text-center">New Message</p>
-                    <form class="form-horizontal" action="/email" method="POST">
+                    <form class="form-horizontal" action="/sendEmail" method="POST">
                         @csrf
                         <div class="form-group">
                             <div class="col-sm-11">

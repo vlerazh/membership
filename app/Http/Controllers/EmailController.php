@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Member;
 use Session;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmail;
 class EmailController extends Controller
 {
     /**
@@ -15,7 +17,10 @@ class EmailController extends Controller
     public function index()
     {
         
-        return view('email.index ');
+        $members = Member::whereHas('courses', function($q) {
+            $q->where('id', Session::get('course_id'));
+        })->get();
+        return view('email.compose')->with('members', $members);
     }
 
     /**
@@ -50,6 +55,21 @@ class EmailController extends Controller
         dd('created');
     }
 
+    public function sendEmail(Request $request){
+
+        $mailData = [
+            'subject' =>  $request->input('subject'),
+            'body' => $request->input('body')
+        ];
+        $to =  $request->input('to');
+        $cc =  $request->input('cc');
+       // $bcc =  $request->input('bcc');
+        Mail::to($to)
+            ->cc($cc)
+            //->bcc($bcc)
+            ->send(new SendEmail($mailData));
+        return redirect('/email')->with('success', 'Email sent');
+    }
     /**
      * Display the specified resource.
      *

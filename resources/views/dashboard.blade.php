@@ -50,7 +50,7 @@
                         <div class="col-lg-3">
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3>60$</h3>
+                                    <h3>{{ $income }}$</h3>
                                     <p>Income</p>
                                 </div>
                                 <div class="icon">

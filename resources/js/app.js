@@ -21,7 +21,7 @@ window.Vue = require('vue').default;
 
 Vue.component('member-chart', require('./components/ActiveMembersChart.vue').default);
 Vue.component('member-per-course-chart', require('./components/MembersPerCourse.vue').default);
-Vue.component('courses-per-user-chart', require('./components/CoursesPerUser.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
